@@ -17,31 +17,40 @@ public class BlueprintController {
         this.blueprintService = blueprintService;
     }
 
+    // READ ALL
     @GetMapping
-    public List<Blueprint> getAllBlueprints() { return blueprintService.getAllBlueprints(); }
+    public List<Blueprint> getAllBlueprints() {
+        return blueprintService.getAllBlueprints();
+    }
 
+    // READ ONE
     @GetMapping("/{id}")
-    public ResponseEntity<Blueprint> getBlueprintById(@PathVariable Long id) {
+    public ResponseEntity<Blueprint> getBlueprintById(@PathVariable String id) {
         return blueprintService.getBlueprintById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // CREATE
     @PostMapping
     public Blueprint createBlueprint(@RequestBody Blueprint blueprint) {
         return blueprintService.createBlueprint(blueprint);
     }
 
+    // UPDATE
     @PutMapping("/{id}")
-    public ResponseEntity<Blueprint> updateBlueprint(@PathVariable Long id, @RequestBody Blueprint blueprint) {
+    public ResponseEntity<Blueprint> updateBlueprint(@PathVariable String id, @RequestBody Blueprint blueprint) {
         Blueprint updated = blueprintService.updateBlueprint(id, blueprint);
-        if (updated != null) return ResponseEntity.ok(updated);
+        if (updated != null)
+            return ResponseEntity.ok(updated);
         return ResponseEntity.notFound().build();
     }
 
+    // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBlueprint(@PathVariable Long id) {
-        if (blueprintService.deleteBlueprint(id)) return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> deleteBlueprint(@PathVariable String id) {
+        if (blueprintService.deleteBlueprint(id))
+            return ResponseEntity.noContent().build();
         return ResponseEntity.notFound().build();
     }
 }
