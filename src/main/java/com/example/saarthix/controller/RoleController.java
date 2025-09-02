@@ -17,13 +17,13 @@ public class RoleController {
         this.roleService = roleService;
     }
 
-    // READ ALL
+    // GET all roles
     @GetMapping
     public List<Role> getAllRoles() {
         return roleService.getAllRoles();
     }
 
-    // READ ONE
+    // GET one role
     @GetMapping("/{id}")
     public ResponseEntity<Role> getRoleById(@PathVariable String id) {
         return roleService.getRoleById(id)
@@ -41,16 +41,14 @@ public class RoleController {
     @PutMapping("/{id}")
     public ResponseEntity<Role> updateRole(@PathVariable String id, @RequestBody Role role) {
         Role updated = roleService.updateRole(id, role);
-        if (updated != null)
-            return ResponseEntity.ok(updated);
+        if (updated != null) return ResponseEntity.ok(updated);
         return ResponseEntity.notFound().build();
     }
 
     // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteRole(@PathVariable String id) {
-        if (roleService.deleteRole(id))
-            return ResponseEntity.noContent().build();
+        if (roleService.deleteRole(id)) return ResponseEntity.noContent().build();
         return ResponseEntity.notFound().build();
     }
 }
