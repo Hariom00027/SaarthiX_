@@ -1,12 +1,12 @@
 package com.example.saarthix.model;
 
+import java.util.Map;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Map;
-
 // Use the actual MongoDB collection that stores roles
-@Document(collection = "Roles")
+@Document(collection = "roles")
 public class Role {
 
     @Id
