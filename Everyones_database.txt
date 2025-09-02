@@ -12,3 +12,9 @@ spring.data.mongodb.uri=mongodb://localhost:27017
 spring.data.mongodb.database=Nattlabs
 
 *********************************************************************
+
+Meenakshi:
+
+spring.application.name=saarthix
+spring.data.mongodb.uri=mongodb://localhost:27017/saarthix
+server.port=8080
