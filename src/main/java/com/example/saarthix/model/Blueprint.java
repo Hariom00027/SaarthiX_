@@ -1,24 +1,46 @@
 package com.example.saarthix.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "blueprints")
 public class Blueprint {
-    private Long id;
+
+    @Id
+    private String id;
     private String title;
     private String description;
 
-    public Blueprint() {}
+    public Blueprint() {
+    }
 
-    public Blueprint(Long id, String title, String description) {
+    public Blueprint(String id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public String getId() {
+        return id;
+    }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

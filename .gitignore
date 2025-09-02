@@ -3,3 +3,23 @@
 
 # Ignore Gradle build output directory
 build
+
+
+# --- Database-related and secrets ---
+# Local Spring config files that may contain DB URIs/credentials
+src/main/resources/application.properties
+src/main/resources/application.yml
+src/main/resources/application.yaml
+src/main/resources/application-local.properties
+src/main/resources/application-*.local.properties
+
+# Env files for credentials
+.env
+*.env
+.env.local
+
+# Local MongoDB data/logs/backups (if stored alongside the project)
+dump/
+data/
+mongodb-data/
+mongod.log

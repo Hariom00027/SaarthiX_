@@ -3,7 +3,6 @@ package com.example.saarthix.service;
 import com.example.saarthix.model.Skill;
 import com.example.saarthix.repository.SkillRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -16,13 +15,32 @@ public class SkillService {
         this.skillRepository = skillRepository;
     }
 
-    public List<Skill> getAllSkills() { return skillRepository.findAll(); }
+    public List<Skill> getAllSkills() {
+        return skillRepository.findAll();
+    }
 
-    public Optional<Skill> getSkillById(Long id) { return skillRepository.findById(id); }
+    public Optional<Skill> getSkillById(String id) {
+        return skillRepository.findById(id);
+    }
 
-    public Skill createSkill(Skill skill) { return skillRepository.save(skill); }
+    public Skill createSkill(Skill skill) {
+        return skillRepository.save(skill);
+    }
 
-    public Skill updateSkill(Long id, Skill skill) { return skillRepository.update(id, skill); }
+    public Skill updateSkill(String id, Skill skill) {
+        return skillRepository.findById(id)
+                .map(existing -> {
+                    existing.setName(skill.getName());
+                    return skillRepository.save(existing);
+                })
+                .orElse(null);
+    }
 
-    public boolean deleteSkill(Long id) { return skillRepository.delete(id); }
+    public boolean deleteSkill(String id) {
+        if (skillRepository.existsById(id)) {
+            skillRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

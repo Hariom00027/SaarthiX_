@@ -23,7 +23,7 @@ public class IndustryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Industry> getIndustryById(@PathVariable Long id) {
+    public ResponseEntity<Industry> getIndustryById(@PathVariable String id) {
         return industryService.getIndustryById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -35,15 +35,17 @@ public class IndustryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Industry> updateIndustry(@PathVariable Long id, @RequestBody Industry industry) {
+    public ResponseEntity<Industry> updateIndustry(@PathVariable String id, @RequestBody Industry industry) {
         Industry updated = industryService.updateIndustry(id, industry);
-        if (updated != null) return ResponseEntity.ok(updated);
+        if (updated != null)
+            return ResponseEntity.ok(updated);
         return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteIndustry(@PathVariable Long id) {
-        if (industryService.deleteIndustry(id)) return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> deleteIndustry(@PathVariable String id) {
+        if (industryService.deleteIndustry(id))
+            return ResponseEntity.noContent().build();
         return ResponseEntity.notFound().build();
     }
 }

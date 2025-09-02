@@ -3,7 +3,6 @@ package com.example.saarthix.service;
 import com.example.saarthix.model.Role;
 import com.example.saarthix.repository.RoleRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +19,7 @@ public class RoleService {
         return roleRepository.findAll();
     }
 
-    public Optional<Role> getRoleById(Long id) {
+    public Optional<Role> getRoleById(String id) {
         return roleRepository.findById(id);
     }
 
@@ -28,11 +27,20 @@ public class RoleService {
         return roleRepository.save(role);
     }
 
-    public Role updateRole(Long id, Role role) {
-        return roleRepository.update(id, role);
+    public Role updateRole(String id, Role role) {
+        return roleRepository.findById(id)
+                .map(existing -> {
+                    existing.setName(role.getName());
+                    return roleRepository.save(existing);
+                })
+                .orElse(null);
     }
 
-    public boolean deleteRole(Long id) {
-        return roleRepository.delete(id);
+    public boolean deleteRole(String id) {
+        if (roleRepository.existsById(id)) {
+            roleRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
