@@ -18,3 +18,12 @@ Meenakshi:
 spring.application.name=saarthix
 spring.data.mongodb.uri=mongodb://localhost:27017/saarthix
 server.port=8080
+
+
+Priyanshu:
+
+Priyanshu Pandey:
+
+server.port=9000
+
+spring.data.mongodb.uri=mongodb://localhost:27017/admin
