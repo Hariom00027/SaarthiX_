@@ -1,3 +1,6 @@
+application.properties(File)
+
+
 Pratistha:
 spring.application.name=saarthix
 spring.data.mongodb.uri=mongodb://localhost:27017/my_database
