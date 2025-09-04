@@ -7,8 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.example.saarthix.model.Role;
-import com.example.saarthix.repository.RoleRepository;
+import com.example.saarthix.model.Job_metrics.Role;
+import com.example.saarthix.repository.Job_metrics.RoleRepository;
 
 @SpringBootApplication
 public class SaarthiXApplication {
@@ -16,15 +16,5 @@ public class SaarthiXApplication {
         SpringApplication.run(SaarthiXApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner testMongoInsert(RoleRepository roleRepository) {
-        return args -> {
-            Role testRole = new Role();
-            testRole.setName("Test Role");
-            testRole.setIndustryId("test-industry");
-            testRole.setSkills(new HashMap<>());
-            roleRepository.save(testRole);
-            System.out.println("Inserted test Role into MongoDB");
-        };
-    }
+
 }
