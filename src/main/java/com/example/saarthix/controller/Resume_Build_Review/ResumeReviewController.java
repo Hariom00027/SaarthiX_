@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/reviews")
 public class ResumeReviewController {
-// Review controller to handle resume reviews
+
     private final ResumeReviewService reviewService;
 
     public ResumeReviewController(ResumeReviewService reviewService) {
