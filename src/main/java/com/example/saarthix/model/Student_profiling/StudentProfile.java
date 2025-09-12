@@ -15,7 +15,7 @@ public class StudentProfile {
     private String skills;
     private String strengths;
     private String weaknesses;
-    private String aiGeneratedProfile;  // AI generated profile (LinkedIn bio/Resume)
+    private String aiGeneratedProfile;  // AI generated profile 
 
     // Getters and Setters
     public String getId() {

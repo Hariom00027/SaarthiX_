@@ -28,10 +28,11 @@ public class ProfilingService {
     }
 
     private String generateAIProfile(StudentProfile profile) {
-        // Dummy logic for AI-based profile generation
+        
         return "AI Generated Profile for " + profile.getName() + ": " +
                 "Strengths: " + profile.getStrengths() + ". " +
                 "Weaknesses: " + profile.getWeaknesses() + ". " +
                 "Skills: " + profile.getSkills() + ".";
     }
 }
+
