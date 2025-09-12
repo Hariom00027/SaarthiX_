@@ -21,7 +21,7 @@ public class ProfilingController {
         return profilingService.getProfile(studentId);
     }
 
-    // Create or update the profile
+    // Create or  update the profile
     @PostMapping("/student")
     public StudentProfile createOrUpdateProfile(@RequestBody StudentProfile profile) {
         return profilingService.createOrUpdateProfile(profile);
